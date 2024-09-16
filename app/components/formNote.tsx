@@ -50,6 +50,9 @@ const FormNote = ({ ...props }) => {
           <Image alt="" src={CheckmarkSvg} />
         </button>
       </div>
+      <h2 className={cx('font-bold', 'text-lg', 'tracking-[0.12px]')}>
+        Note
+      </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={cx('flex', 'flex-col', 'gap-6')}>
           <input

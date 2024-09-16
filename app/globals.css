@@ -43,10 +43,15 @@
 
   input, textarea {
     @apply bg-transparent text-white;
+    color-scheme: dark;
   }
 
   input::placeholder, textarea::placeholder {
     @apply text-white opacity-80;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    margin-left: -20px;
   }
 }
 
