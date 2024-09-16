@@ -3,26 +3,109 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* colors */
+  --black: #000000;
+  --white: #ffffff;
+  --grey-100: #E0E0E0;
+  --grey-200: #BDBDBD;
+  --grey-300: #7E7E7E;
+  --grey-400: #828282;
+  --grey-500: #4F4F4F;
+
+  --purple: #3C1F7B;
+  --purple-dark-100: #241641;
+  --purple-dark-200: #272430;
+  --purple-dark-300: #282530;
+  --purple-light-100: #CCC2FE;
+  --purple-light-200: #C68AFF;
+  --purple-light-300: #7E64FF;
+  /* + icon menu background color TODO */
+
+  --red: #FF636C;
+
+  /* gradients */
+  --gradient-primary: linear-gradient(225deg, #2A2A2E 11%, #2B125A 47%, #000000 85%);
+
+  /* fonts */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *,
+  ::after,
+  ::before {
+    @apply m-0 p-0 box-content;
+  }
+
+  body {
+    @apply font-nunito;
   }
 }
 
-body {
-  box-sizing: content-box;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.calendar {
+  width: 900px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.calendar-header {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.calendar-body {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-header {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.weekday {
+  width: 100px;
+  text-align: center;
+}
+
+.table-content {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.calendar-day {
+  width: 125px;
+  height: 75px;
+  position: relative;
+  border: 1px solid #a6a6a6;
+}
+
+.calendar-day:hover {
+  background-color: rgba(0, 0, 0, .10);
+}
+
+.calendar-day p {
+  position: absolute;
+  right: 10px;
+  color: #a6a6a6;
+}
+
+.current p {
+  color: #000000;
+}
+
+.selected p {
+  color: #cc0000;
+  font-weight: bold;
 }

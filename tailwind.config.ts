@@ -7,18 +7,51 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      inter: [
+        'var(--font-nunito)',
+        'system-ui',
+        '-apple-system',
+        'Segoe UI',
+        'Roboto',
+        'Helvetica',
+        'Arial',
+        'sans-serif',
+        'Apple Color Emoji',
+        'Segoe UI Emoji',
+      ],
+    },
+    screens: {
+      xl: '1280px',
+      lg: '1024px',
+      'md-large': '890px',
+      md: '768px',
+      sm: '640px',
+      xs: '480px',
+      xxs: '320px',
+    },
     extend: {
       backgroundImage: {
         'gradient-primary':
           'linear-gradient(225deg, #2A2A2E 11%, #2B125A 47%, #000000 85%);',
       },
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        black: 'var(--black)',
+        white: 'var(--white)',
         purple: {
-          DEFAULT: '#3C1F7B',
-          dark: '#272430',
+          DEFAULT: 'var(--purple)',
+          dark: {
+            '100': 'var(--purple-dark-100)',
+            '200': 'var(--purple-dark-200)',
+            '300': 'var(--purple-dark-300)',
+          },
+          light: {
+            '100': 'var(--purple-light-100)',
+            '200': 'var(--purple-light-200)',
+            '300': 'var(--purple-light-300)',
+          },
         },
+        red: 'var(--red)',
       },
     },
   },
