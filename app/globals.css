@@ -40,6 +40,14 @@
   body {
     @apply font-nunito text-white;
   }
+
+  input, textarea {
+    @apply bg-transparent text-white;
+  }
+
+  input::placeholder, textarea::placeholder {
+    @apply text-white opacity-80;
+  }
 }
 
 @layer utilities {
