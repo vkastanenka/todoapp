@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      inter: [
+      nunito: [
         'var(--font-nunito)',
         'system-ui',
         '-apple-system',

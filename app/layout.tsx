@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.variable} bg-gradient-primary`}>
+      <body className={`${nunito.variable}`}>
         {children}
       </body>
     </html>

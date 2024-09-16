@@ -1,47 +1,25 @@
+// components
+import Image from 'next/image'
+import OnTimeSvg from './svg/ontime.svg'
+
+// modules
+import FeatureSelect from './components/featureSelect'
+// import Calendar from './components/calendar'
+
+// utilities
 import cx from 'classnames'
 
-// import Calendar from './components/calendar'
 
 export default function Home() {
   return (
-    <main
-      className={cx('flex', 'justify-center', 'items-center', 'min-h-screen')}
-    >
-      <h1 className={cx('pb-8')}>on.time</h1>
-      {/* <FeatureSelect />
-      <Calendar /> */}
+    <main className={cx('bg-gradient-primary')}>
+      <div className={cx('px-8', 'py-16')}>
+        <div>
+          <Image alt="logo" src={OnTimeSvg} />
+        </div>
+        <FeatureSelect />
+        {/* <Calendar /> */}
+      </div>
     </main>
   )
 }
-
-// const FeatureSelect = () => {
-//   return (
-//     <div className={cx('bg-purple', 'rounded', 'p-1', 'flex')}>
-//       <button
-//         className={cx(
-//           'rounded',
-//           'bg-purple-dark',
-//           'text-white',
-//           'py-2',
-//           'px-8',
-//           'text-center',
-//           'grow'
-//         )}
-//       >
-//         Schedule
-//       </button>
-//       <button
-//         className={cx(
-//           'rounded',
-//           'text-white',
-//           'py-2',
-//           'px-8',
-//           'text-center',
-//           'grow'
-//         )}
-//       >
-//         Note
-//       </button>
-//     </div>
-//   )
-// }
