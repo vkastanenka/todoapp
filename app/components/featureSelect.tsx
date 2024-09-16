@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-const FeatureSelect = ({ ...props }) => {
+const FeatureSelect = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   return (
     <div className={cx('py-8', 'px-6')} {...props}>
       <div className={cx('bg-purple', 'rounded', 'p-1', 'flex', 'gap-4')}>

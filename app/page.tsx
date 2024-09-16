@@ -3,18 +3,20 @@ import Header from '@components/header'
 import FeatureSelect from '@components/featureSelect'
 import Calendar from '@components/calendar'
 import Schedule from '@components/schedule'
+// import AddData from '@components/addData'
 
 // utilities
 import cx from 'classnames'
 
-const Home = ({ ...props }) => {
+const Home = () => {
   return (
-    <main className={cx('px-8', 'py-16')} {...props}>
+    <main className={cx('px-8', 'py-16')}>
       <div>
         <Header />
         <FeatureSelect />
         <Calendar />
         <Schedule />
+        {/* <AddData /> */}
       </div>
     </main>
   )

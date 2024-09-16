@@ -22,7 +22,7 @@ const months = [
   'December',
 ]
 
-const Calendar = ({ ...props }) => {
+const Calendar = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   const [currentDay, setCurrentDay] = useState<Date>(new Date())
 
   return (
@@ -82,7 +82,7 @@ const CalendarDays = ({
 }: {
   currentDay: Date
   setCurrentDay: React.Dispatch<React.SetStateAction<Date>>
-}) => {
+} & React.HTMLProps<HTMLDivElement>) => {
   const firstDayOfMonth = new Date(
     currentDay.getFullYear(),
     currentDay.getMonth(),

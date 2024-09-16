@@ -34,7 +34,7 @@ const scheduleItems = [
   },
 ]
 
-const Schedule = ({ ...props }) => {
+const Schedule = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   return (
     <div className={cx('p-4')} {...props}>
       <div className={cx('pb-6')}>
@@ -53,7 +53,7 @@ const Schedule = ({ ...props }) => {
                 <ScheduleCard
                   key={i}
                   isComplete={isComplete}
-                  data={{ heading, time, place, notes }}
+                  cardData={{ heading, time, place, notes }}
                 />
               )
             )}
@@ -74,7 +74,7 @@ const Schedule = ({ ...props }) => {
 
 export default Schedule
 
-const ScheduleDate = ({ ...props }) => {
+const ScheduleDate = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   return (
     <div className={cx('relative')} {...props}>
       <div
@@ -97,7 +97,7 @@ const ScheduleDate = ({ ...props }) => {
 }
 
 interface ScheduleCard {
-  data: {
+  cardData: {
     heading: string
     time: string
     place: string
@@ -106,7 +106,11 @@ interface ScheduleCard {
   isComplete?: boolean
 }
 
-const ScheduleCard = ({ data, isComplete, ...props }: ScheduleCard) => {
+const ScheduleCard = ({
+  cardData,
+  isComplete,
+  ...props
+}: ScheduleCard & React.HTMLProps<HTMLDivElement>) => {
   return (
     <div
       className={cx(
@@ -130,7 +134,7 @@ const ScheduleCard = ({ data, isComplete, ...props }: ScheduleCard) => {
             ...(isComplete ? ['border-purple'] : ['border-purple-light-200'])
           )}
         >
-          <p className={cx('font-semibold', 'text-sm')}>{data.heading}</p>
+          <p className={cx('font-semibold', 'text-sm')}>{cardData.heading}</p>
           <Image
             alt="checkbox"
             src={isComplete ? CheckboxSvg : CheckboxEmptySvg}
@@ -143,9 +147,9 @@ const ScheduleCard = ({ data, isComplete, ...props }: ScheduleCard) => {
             <p className={cx('font-bold', 'text-xs')}>Notes</p>
           </div>
           <div className={cx('flex', 'flex-col', 'gap-1')}>
-            <p className={cx('text-xs')}>{data.time}</p>
-            <p className={cx('text-xs')}>{data.place}</p>
-            <p className={cx('text-xs')}>{data.notes ? data.notes : 'None'}</p>
+            <p className={cx('text-xs')}>{cardData.time}</p>
+            <p className={cx('text-xs')}>{cardData.place}</p>
+            <p className={cx('text-xs')}>{cardData.notes ? cardData.notes : 'None'}</p>
           </div>
         </div>
       </div>

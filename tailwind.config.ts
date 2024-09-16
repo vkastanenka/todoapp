@@ -44,6 +44,7 @@ const config: Config = {
           '300': 'var(--grey-300)',
           '400': 'var(--grey-400)',
           '500': 'var(--grey-500)',
+          '600': 'var(--grey-600)',
         },
         purple: {
           DEFAULT: 'var(--purple)',
