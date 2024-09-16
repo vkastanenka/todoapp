@@ -42,22 +42,32 @@ const Schedule = ({ ...props }) => {
           Schedule
         </h2>
       </div>
-      <div className={cx('pl-6', 'flex', 'gap-6')}>
-        <div className={cx('pt-3')}>
-          <ScheduleDate>20</ScheduleDate>
+      {scheduleItems.length ? (
+        <div className={cx('pl-6', 'flex', 'gap-6')}>
+          <div className={cx('pt-3')}>
+            <ScheduleDate>20</ScheduleDate>
+          </div>
+          <div className={cx('flex', 'flex-col', 'gap-4')}>
+            {scheduleItems.map(
+              ({ isComplete, heading, time, place, notes }, i) => (
+                <ScheduleCard
+                  key={i}
+                  isComplete={isComplete}
+                  data={{ heading, time, place, notes }}
+                />
+              )
+            )}
+          </div>
         </div>
-        <div className={cx('flex', 'flex-col', 'gap-4')}>
-          {scheduleItems.map(
-            ({ isComplete, heading, time, place, notes }, i) => (
-              <ScheduleCard
-                key={i}
-                isComplete={isComplete}
-                data={{ heading, time, place, notes }}
-              />
-            )
-          )}
+      ) : (
+        <div className={cx('flex', 'justify-center')}>
+          <div className={cx('rounded-lg', 'bg-purple', 'p-3')}>
+            <p
+              className={cx('font-semibold', 'text-xs')}
+            >{`You don't have anything scheduled`}</p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
@@ -117,9 +127,7 @@ const ScheduleCard = ({ data, isComplete, ...props }: ScheduleCard) => {
             'items-center',
             'pb-2',
             'border-b-[1px]',
-            ...(isComplete
-              ? ['border-purple']
-              : ['border-purple-light-200'])
+            ...(isComplete ? ['border-purple'] : ['border-purple-light-200'])
           )}
         >
           <p className={cx('font-semibold', 'text-sm')}>{data.heading}</p>
