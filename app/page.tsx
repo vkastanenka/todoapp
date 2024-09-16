@@ -1,25 +1,21 @@
-// components
-import Image from 'next/image'
-import OnTimeSvg from './svg/ontime.svg'
-
 // modules
-import FeatureSelect from './components/featureSelect'
-// import Calendar from './components/calendar'
+import Header from '@components/header'
+import FeatureSelect from '@components/featureSelect'
+import Calendar from '@components/calendar'
 
 // utilities
 import cx from 'classnames'
 
-
-export default function Home() {
+const Home = () => {
   return (
-    <main className={cx('bg-gradient-primary')}>
-      <div className={cx('px-8', 'py-16')}>
-        <div>
-          <Image alt="logo" src={OnTimeSvg} />
-        </div>
+    <main className={cx('px-8', 'py-16')}>
+      <div>
+        <Header />
         <FeatureSelect />
-        {/* <Calendar /> */}
+        <Calendar />
       </div>
     </main>
   )
 }
+
+export default Home

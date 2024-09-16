@@ -18,8 +18,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@*": ["./*"],
+      "@app/*": ["./app/*"],
+      "@components/*": ["./app/components/*"],
+      "@fonts/*": ["./app/fonts/*"],
+      "@svg/*": ["./app/svg/*"],
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

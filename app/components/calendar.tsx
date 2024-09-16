@@ -1,8 +1,10 @@
 'use client'
 
-import { useState, Dispatch, SetStateAction, HTMLAttributes } from 'react'
+// utilities
+import { useState } from 'react'
 import cx from 'classnames'
 
+// data
 const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const months = [
@@ -24,25 +26,39 @@ const Calendar = () => {
   const [currentDay, setCurrentDay] = useState<Date>(new Date())
 
   return (
-    <div className={cx('flex', 'flex-col', 'w-[900px]')}>
-      <div className={cx('calendar-header')}>
-        <h2>
+    <div className={cx('p-4')}>
+      <div className={cx('text-center', 'flex', 'flex-col', 'gap-4')}>
+        <h2
+          className={cx(
+            'font-bold',
+            'text-[18px]',
+            'tracking-[0.12px]',
+            'uppercase'
+          )}
+        >
           {months[currentDay.getMonth()]} {currentDay.getFullYear()}
         </h2>
       </div>
-      <div className={cx('calendar-body')}>
-        <div className={cx('table-header')}>
+      <div className={cx('flex', 'flex-col', 'gap-1')}>
+        <div className={cx('flex')}>
           {days.map((day, i) => {
             return (
-              <div className={cx('weekday')} key={i}>
-                <p>{day}</p>
+              <div className={cx('px-1', 'py-4', 'grow')} key={i}>
+                <p
+                  className={cx(
+                    'font-extrabold',
+                    'tracking-[0.12px]',
+                    'uppercase',
+                    ...(i === 0 ? ['text-red'] : [])
+                  )}
+                >
+                  {day}
+                </p>
               </div>
             )
           })}
         </div>
-        <div className={cx('table')}>
-          <CalendarDays currentDay={currentDay} setCurrentDay={setCurrentDay} />
-        </div>
+        <CalendarDays currentDay={currentDay} setCurrentDay={setCurrentDay} />
       </div>
     </div>
   )
@@ -65,8 +81,8 @@ const CalendarDays = ({
   ...props
 }: {
   currentDay: Date
-  setCurrentDay: Dispatch<SetStateAction<Date>>
-} & HTMLAttributes<HTMLDivElement>) => {
+  setCurrentDay: React.Dispatch<React.SetStateAction<Date>>
+} & React.HTMLAttributes<HTMLDivElement>) => {
   const firstDayOfMonth = new Date(
     currentDay.getFullYear(),
     currentDay.getMonth(),
@@ -100,21 +116,54 @@ const CalendarDays = ({
   }
 
   return (
-    <div className="table-content" {...props}>
+    <div className={cx('grid', 'grid-cols-7')} {...props}>
       {currentDays.map((day, i) => {
+        const dayIsSelected =
+          day.number === currentDay.getDate() &&
+          day.month === currentDay.getMonth()
+
         return (
           <div
             key={i}
-            className={
-              'calendar-day' +
-              (day.currentMonth ? ' current' : '') +
-              (day.selected ? ' selected' : '')
-            }
+            className={cx(
+              'text-center',
+              'py-4',
+              ...(!day.currentMonth ? ['text-grey-300'] : []),
+              ...(day.currentMonth && !dayIsSelected && (i === 0 || i % 7 === 0)
+                ? ['text-red']
+                : []),
+              ...(dayIsSelected
+                ? ['text-black', 'rounded-full', 'relative']
+                : [])
+            )}
             onClick={() =>
               setCurrentDay(new Date(day.year, day.month, day.number))
             }
           >
-            <p>{day.number}</p>
+            {dayIsSelected && (
+              <div
+                className={cx(
+                  'w-10',
+                  'h-10',
+                  'rounded-full',
+                  'bg-purple-light-300',
+                  'absolute-center',
+                  'z-0'
+                )}
+              />
+            )}
+            <p
+              className={cx(
+                'font-semibold',
+                'tracking-[0.12px]',
+                'relative',
+                ...(dayIsSelected
+                  ? ['z-10']
+                  : [])
+              )}
+            >
+              {day.number}
+            </p>
           </div>
         )
       })}
