@@ -22,16 +22,16 @@ const months = [
   'December',
 ]
 
-const Calendar = () => {
+const Calendar = ({ ...props }) => {
   const [currentDay, setCurrentDay] = useState<Date>(new Date())
 
   return (
-    <div className={cx('p-4')}>
+    <div className={cx('p-4')} {...props}>
       <div className={cx('text-center', 'flex', 'flex-col', 'gap-4')}>
         <h2
           className={cx(
             'font-bold',
-            'text-[18px]',
+            'text-lg',
             'tracking-[0.12px]',
             'uppercase'
           )}
@@ -82,7 +82,7 @@ const CalendarDays = ({
 }: {
   currentDay: Date
   setCurrentDay: React.Dispatch<React.SetStateAction<Date>>
-} & React.HTMLAttributes<HTMLDivElement>) => {
+}) => {
   const firstDayOfMonth = new Date(
     currentDay.getFullYear(),
     currentDay.getMonth(),
@@ -157,9 +157,7 @@ const CalendarDays = ({
                 'font-semibold',
                 'tracking-[0.12px]',
                 'relative',
-                ...(dayIsSelected
-                  ? ['z-10']
-                  : [])
+                ...(dayIsSelected ? ['z-10'] : [])
               )}
             >
               {day.number}

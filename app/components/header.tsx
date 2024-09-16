@@ -2,9 +2,9 @@
 import Image from 'next/image'
 import OnTimeSvg from '@svg/ontime.svg'
 
-const Header = () => {
+const Header = ({ ...props }) => {
   return (
-    <header>
+    <header {...props}>
       <Image alt="logo" src={OnTimeSvg} />
     </header>
   )
