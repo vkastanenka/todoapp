@@ -15,7 +15,12 @@ interface FormScheduleInputs {
   notes?: string
 }
 
-const FormSchedule = ({ ...props }) => {
+const FormSchedule = ({
+  setFormIsActive,
+  ...props
+}: {
+  setFormIsActive: React.Dispatch<React.SetStateAction<boolean>>
+} & React.HTMLAttributes<HTMLDivElement>) => {
   const {
     register,
     handleSubmit,
@@ -27,14 +32,32 @@ const FormSchedule = ({ ...props }) => {
 
   return (
     <div
-      className={cx('px-8', 'py-16', 'flex', 'flex-col', 'gap-6')}
+      className={cx(
+        'fixed',
+        'h-screen',
+        'top-0',
+        'left-0',
+        'right-0',
+        'z-[70]',
+        'px-8',
+        'py-16',
+        'bg-gradient-primary',
+        'flex',
+        'flex-col',
+        'gap-6'
+      )}
       {...props}
     >
       <div className={cx('flex', 'items-center', 'justify-between')}>
-        <button>
+        <button onClick={() => setFormIsActive((prevState) => !prevState)}>
           <Image alt="" src={ArrowLeftSvg} />
         </button>
-        <button onClick={() => handleSubmit(onSubmit)}>
+        <button
+          onClick={() => {
+            handleSubmit(onSubmit)
+            setFormIsActive((prevState) => !prevState)
+          }}
+        >
           <Image alt="" src={CheckmarkSvg} />
         </button>
       </div>

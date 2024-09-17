@@ -25,7 +25,7 @@ const RootLayout = ({
           nunito.variable,
           'min-h-screen',
           'bg-gradient-primary',
-          'backdrop-blur-3xl'
+          // 'backdrop-blur-3xl'
         )}
       >
         {children}

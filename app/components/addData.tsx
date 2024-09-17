@@ -6,45 +6,91 @@ import CalendarSvg from '@svg/calendar.svg'
 import NoteSvg from '@svg/note.svg'
 import PlusSvg from '@svg/plus.svg'
 
+// modules
+import FormNote from '@components/formNote'
+import FormSchedule from '@components/formSchedule'
+
 // utilities
 import cx from 'classnames'
+import { useState, useEffect } from 'react'
 
 // types
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 
 const AddData = () => {
+  const [isActive, setIsActive] = useState<boolean>(false)
+  const [formNoteIsActive, setFormNoteIsActive] = useState<boolean>(false)
+  const [formScheduleIsActive, setFormScheduleIsActive] =
+    useState<boolean>(false)
+
+  useEffect(() => {
+    if (isActive) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'auto'
+    }
+  }, [isActive])
+
   return (
-    <div
-      className={cx(
-        'fixed',
-        'h-screen',
-        'w-screen',
-        'bg-grey-600',
-        'top-0',
-        'left-0',
-        'z-50'
-      )}
-    >
-      <div className={cx('relative', 'h-full')}>
-        <div
-          className={cx(
-            'absolute',
-            'right-6',
-            'bottom-6',
-            'flex',
-            'flex-col',
-            'justify-center',
-            'gap-6'
-          )}
+    <>
+      <div
+        className={cx(
+          'fixed',
+          'h-screen',
+          'w-screen',
+          'top-0',
+          'left-0',
+          'z-30',
+          'pointer-events-none',
+          ...(isActive ? ['bg-grey-600'] : ['bg-transparent'])
+        )}
+      />
+      {formNoteIsActive && <FormNote setFormIsActive={setFormNoteIsActive} />}
+      {formScheduleIsActive && <FormSchedule setFormIsActive={setFormScheduleIsActive} />}
+      <div
+        className={cx(
+          'fixed',
+          'right-6',
+          'bottom-6',
+          'flex',
+          'flex-col',
+          'justify-center',
+          'gap-6',
+          'z-50'
+        )}
+      >
+        {isActive && (
+          <button
+            onClick={() => {
+              setIsActive((prevState) => !prevState)
+              setFormNoteIsActive((prevState) => !prevState)
+            }}
+          >
+            <AddDataButton heading="Note" svg={NoteSvg} />
+          </button>
+        )}
+        {isActive && (
+          <button
+            onClick={() => {
+              setIsActive((prevState) => !prevState)
+              setFormScheduleIsActive((prevState) => !prevState)
+            }}
+          >
+            <AddDataButton heading="Schedule" svg={CalendarSvg} />
+          </button>
+        )}
+        <button
+          onClick={() => setIsActive((prevState) => !prevState)}
+          className={cx('rounded-full', 'bg-purple-light-300', 'p-4')}
         >
-          <AddDataButton heading="Note" svg={NoteSvg} />
-          <AddDataButton heading="Schedule" svg={CalendarSvg} />
-          <div className={cx('rounded-full', 'bg-purple-light-300', 'p-4')}>
-            <Image alt="" src={PlusSvg} />
-          </div>
-        </div>
+          <Image
+            alt=""
+            src={PlusSvg}
+            className={cx(...(isActive ? ['rotate-45'] : ['']))}
+          />
+        </button>
       </div>
-    </div>
+    </>
   )
 }
 

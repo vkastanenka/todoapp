@@ -3,7 +3,7 @@ import Header from '@components/header'
 import FeatureSelect from '@components/featureSelect'
 import Calendar from '@components/calendar'
 import Schedule from '@components/schedule'
-// import AddData from '@components/addData'
+import   AddData from '@components/addData'
 // import FormNote from '@components/formNote'
 // import FormSchedule from '@components/formSchedule'
 
@@ -18,10 +18,10 @@ const Home = () => {
         <FeatureSelect />
         <Calendar />
         <Schedule />
-        {/* <AddData /> */}
       </div>
       {/* <FormNote />
       <FormSchedule /> */}
+      <AddData />
     </main>
   )
 }
