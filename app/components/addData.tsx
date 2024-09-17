@@ -7,8 +7,8 @@ import NoteSvg from '@svg/note.svg'
 import PlusSvg from '@svg/plus.svg'
 
 // modules
-import FormNote from '@components/formNote'
-import FormSchedule from '@components/formSchedule'
+import FormNote from '@components/forms/formNote'
+import FormSchedule from '@components/forms/formSchedule'
 
 // utilities
 import cx from 'classnames'
@@ -24,12 +24,12 @@ const AddData = () => {
     useState<boolean>(false)
 
   useEffect(() => {
-    if (isActive) {
+    if (isActive || formNoteIsActive || formScheduleIsActive) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'auto'
     }
-  }, [isActive])
+  }, [isActive, formNoteIsActive, formScheduleIsActive])
 
   return (
     <>
@@ -46,7 +46,9 @@ const AddData = () => {
         )}
       />
       {formNoteIsActive && <FormNote setFormIsActive={setFormNoteIsActive} />}
-      {formScheduleIsActive && <FormSchedule setFormIsActive={setFormScheduleIsActive} />}
+      {formScheduleIsActive && (
+        <FormSchedule setFormIsActive={setFormScheduleIsActive} />
+      )}
       <div
         className={cx(
           'fixed',

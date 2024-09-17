@@ -46,6 +46,10 @@
     color-scheme: dark;
   }
 
+  input:focus, textarea:focus {
+    @apply outline-none;
+  }
+
   input::placeholder, textarea::placeholder {
     @apply text-white opacity-80;
   }

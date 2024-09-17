@@ -1,9 +1,10 @@
 'use client'
 
 // components
+import Image from 'next/image'
 import ArrowLeftSvg from '@svg/arrow-left.svg'
 import CheckmarkSvg from '@svg/checkmark.svg'
-import Image from 'next/image'
+import { FormContainer } from '@components/forms'
 
 // utilities
 import cx from 'classnames'
@@ -32,23 +33,7 @@ const FormNote = ({
   }
 
   return (
-    <div
-      className={cx(
-        'fixed',
-        'h-screen',
-        'top-0',
-        'left-0',
-        'right-0',
-        'z-[70]',
-        'px-8',
-        'py-16',
-        'bg-purple-light-300',
-        'flex',
-        'flex-col',
-        'gap-6'
-      )}
-      {...props}
-    >
+    <FormContainer className={cx('bg-purple-light-300')} {...props}>
       <div className={cx('flex', 'items-center', 'justify-between')}>
         <button onClick={() => setFormIsActive((prevState) => !prevState)}>
           <Image alt="" src={ArrowLeftSvg} />
@@ -64,17 +49,22 @@ const FormNote = ({
         </button>
       </div>
       <h2 className={cx('font-bold', 'text-lg', 'tracking-[0.12px]')}>Note</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={cx('flex', 'flex-col', 'gap-6')}>
-          <input
-            placeholder="Title"
-            {...register('title')}
-            className={cx('font-bold')}
-          />
-          <textarea rows={20} placeholder="Content" {...register('content')} />
-        </div>
+      <form
+        className={cx('grow', 'flex', 'flex-col', 'gap-6')}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <input
+          placeholder="Title"
+          {...register('title')}
+          className={cx('font-bold')}
+        />
+        <textarea
+          className={cx('grow')}
+          placeholder="Content"
+          {...register('content')}
+        />
       </form>
-    </div>
+    </FormContainer>
   )
 }
 

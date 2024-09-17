@@ -3,9 +3,7 @@ import Header from '@components/header'
 import FeatureSelect from '@components/featureSelect'
 import Calendar from '@components/calendar'
 import Schedule from '@components/schedule'
-import   AddData from '@components/addData'
-// import FormNote from '@components/formNote'
-// import FormSchedule from '@components/formSchedule'
+import AddData from '@components/addData'
 
 // utilities
 import cx from 'classnames'
@@ -19,8 +17,6 @@ const Home = () => {
         <Calendar />
         <Schedule />
       </div>
-      {/* <FormNote />
-      <FormSchedule /> */}
       <AddData />
     </main>
   )
