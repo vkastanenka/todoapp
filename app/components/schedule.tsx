@@ -36,17 +36,15 @@ const scheduleItems = [
 
 const Schedule = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   return (
-    <div className={cx('p-4')} {...props}>
-      <div className={cx('pb-6')}>
+    <div className={cx('py-4')} {...props}>
+      <div className={cx('pb-8')}>
         <h2 className={cx('font-bold', 'text-lg', 'tracking-[0.12px]')}>
           Schedule
         </h2>
       </div>
       {scheduleItems.length ? (
-        <div className={cx('pl-6', 'flex', 'gap-6')}>
-          <div className={cx('pt-3')}>
-            <ScheduleDate>20</ScheduleDate>
-          </div>
+        <div className={cx('pl-6', 'flex', 'gap-4')}>
+          <ScheduleDate>20</ScheduleDate>
           <div className={cx('flex', 'flex-col', 'gap-4')}>
             {scheduleItems.map(
               ({ isComplete, heading, time, place, notes }, i) => (
@@ -76,7 +74,17 @@ export default Schedule
 
 const ScheduleDate = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
   return (
-    <div className={cx('relative')} {...props}>
+    <div
+      className={cx(
+        'relative',
+        'w-8',
+        'h-8',
+        'flex',
+        'items-center',
+        'justify-center'
+      )}
+      {...props}
+    >
       <div
         className={cx(
           'rounded-full',
@@ -149,7 +157,9 @@ const ScheduleCard = ({
           <div className={cx('flex', 'flex-col', 'gap-1')}>
             <p className={cx('text-xs')}>{cardData.time}</p>
             <p className={cx('text-xs')}>{cardData.place}</p>
-            <p className={cx('text-xs')}>{cardData.notes ? cardData.notes : 'None'}</p>
+            <p className={cx('text-xs')}>
+              {cardData.notes ? cardData.notes : 'None'}
+            </p>
           </div>
         </div>
       </div>

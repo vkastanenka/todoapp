@@ -13,7 +13,7 @@ import cx from 'classnames'
 const Home = () => {
   return (
     <main>
-      <div className={cx('px-8', 'py-16')}>
+      <div className={cx('px-6', 'py-16')}>
         <Header />
         <FeatureSelect />
         <Calendar />
