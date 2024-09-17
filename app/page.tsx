@@ -1,8 +1,9 @@
 // modules
 import Header from '@components/header'
 import FeatureSelect from '@components/featureSelect'
-import Calendar from '@components/calendar'
-import Schedule from '@components/schedule'
+// import Calendar from '@components/calendar'
+// import Schedule from '@components/schedule'
+import Notes from '@components/notes'
 import AddData from '@components/addData'
 
 // utilities
@@ -14,8 +15,9 @@ const Home = () => {
       <div className={cx('px-6', 'py-16')}>
         <Header />
         <FeatureSelect />
-        <Calendar />
-        <Schedule />
+        {/* <Calendar />
+        <Schedule /> */}
+        <Notes />
       </div>
       <AddData />
     </main>

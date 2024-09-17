@@ -62,7 +62,7 @@ const FormSchedule = ({
             'py-1',
             'rounded',
             'text-grey-500',
-            'placeholder:text-grey-500'
+            'placeholder:text-grey-400'
           )}
         />
         <input
@@ -74,7 +74,7 @@ const FormSchedule = ({
             'py-1',
             'rounded',
             'text-grey-500',
-            'placeholder:text-grey-500'
+            'placeholder:text-grey-400'
           )}
         />
         <div className={cx('flex', 'items-center', 'justify-between')}>
@@ -96,7 +96,7 @@ const FormSchedule = ({
             'py-1',
             'rounded',
             'text-grey-500',
-            'placeholder:text-grey-500'
+            'placeholder:text-grey-400'
           )}
         />
       </form>
